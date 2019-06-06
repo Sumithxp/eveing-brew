@@ -1,30 +1,13 @@
 var express = require('express');
 var router = express.Router();
-//var sql = require('mssql');
-//var conn = require("../connection/connect")();
 
-var productModel=require("./models/product.model");
-
-var products = [
-    { ProductId: 1, ProductName: "Prod01", ProductPrice: 21.00 },
-    { ProductId: 2, ProductName: "Prod02", ProductPrice: 44.00 },
-    { ProductId: 3, ProductName: "Prod03", ProductPrice: 35.00 },
-    { ProductId: 4, ProductName: "Prod04", ProductPrice: 56.00 },
-
-]
+var products = [];
 var routes = function () {
     router.route('/')
         .get(function (req, res) {
-            productModel.find()
-            .then(p => {
-                res.send(p);
-            }).catch(err => {
-                res.status(500).send({
-                    message: err.message || "Some error occurred while retrieving notes."
-                });
-            });
 
-         //   res.json(products);
+
+            res.json("app is up");
 
             // conn.connect().then(function()
             // {
@@ -79,4 +62,5 @@ var routes = function () {
         });
     return router;
 };
+
 module.exports = routes;
