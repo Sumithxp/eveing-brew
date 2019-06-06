@@ -18,11 +18,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
-// var productController = require('./Controller/ProductController')();
-// app.use("/api/products", productController);
+ var productController = require('./Controller/ProductController')();
+ app.use("/api/products", productController);
 
-// var appointmentController = require('./Controller/AppointmentController')();
-// app.use("/api/appointments", appointmentController);
+ var appointmentController = require('./Controller/AppointmentController')();
+ app.use("/api/appointments", appointmentController);
 
 var loginController = require('./Controller/loginController')();
 app.use("/api/login", loginController);
