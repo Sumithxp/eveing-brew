@@ -9,7 +9,7 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send('Auth Api Server')
+  response.send('Api Server')
 })
 
 var bodyParser = require('body-parser');
@@ -24,8 +24,8 @@ app.use(bodyParser.json());
  var appointmentController = require('./Controller/AppointmentController')();
  app.use("/api/appointments", appointmentController);
 
-var loginController = require('./Controller/loginController')();
-app.use("/api/login", loginController);
+// var loginController = require('./Controller/loginController')();
+// app.use("/api/login", loginController);
 
 
 
