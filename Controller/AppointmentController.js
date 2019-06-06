@@ -36,6 +36,9 @@ var routes = function () {
 
     router.route('/')
         .post(function (req, res) {
+            var id = Appointments.length + 1;
+            Appointments.push({ AppointmentId: id, name: req.body.name, timeInterval: req.body.timeInterval, startTime: req.body.startTime, status: 1, image: '', forMe: 1 });
+            res.send("ok")
             // conn.connect().then(function () {
             //     var transaction = new sql.Transaction(conn);
             //     transaction.begin().then(function () {
