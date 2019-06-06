@@ -15,16 +15,16 @@ var products = [
 var routes = function () {
     router.route('/')
         .get(function (req, res) {
-            productModel.find()
-            .then(p => {
-                res.send(p);
-            }).catch(err => {
-                res.status(500).send({
-                    message: err.message || "Some error occurred while retrieving notes."
-                });
-            });
+         //   productModel.find()
+          //  .then(p => {
+           //     res.send(p);
+           // }).catch(err => {
+           //     res.status(500).send({
+            //        message: err.message || "Some error occurred while retrieving notes."
+           //     });
+          //  });
 
-         //   res.json(products);
+            res.json(products);
 
             // conn.connect().then(function()
             // {

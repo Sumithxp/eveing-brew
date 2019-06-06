@@ -1,64 +1,47 @@
 var express = require('express');
 var router = express.Router();
 
-var products = [];
+var loging = [
+    { user: 'admin', password: 'admin', role: 'admin' },
+    { user: 'saman', password: 'pass', role: 'user' },
+];
+
+
 var routes = function () {
     router.route('/')
         .get(function (req, res) {
-
-
             res.json("app is up");
 
-            // conn.connect().then(function()
-            // {
-            //     var sqlQuery = "select * from Products";
-            //     var req = new sql.Request(conn);
-            //         req.query(sqlQuery).then(function (recordset)
-            //         {
-            //             res.json(recordset.recordset);
-            //             conn.close();
-            //         })
-            //         .catch(function (err) {
-            //             conn.close();
-            //             res.status(400).send("Error while inserting data qq " + err);
-            //         });
-            // })
-            //     .catch(function (err) {
-            //         conn.close();
-            //         res.status(400).send("Error while inserting data ee " + err);
-            //     });
         });
 
     router.route('/')
         .post(function (req, res) {
-            var id = products.length + 1;
-            products.push({ ProductId: id, ProductName: '"' + req.body.ProductName + "'", ProductPrice: req.body.ProductPrice })
+            //var id = products.length + 1;
+            // products.push({ ProductId: id, ProductName: '"' + req.body.ProductName + "'", ProductPrice: req.body.ProductPrice })
+            var user = req.body.user;
+            var pass = req.body.password;
 
-            // conn.connect().then(function () {
-            //     var transaction = new sql.Transaction(conn);
-            //     transaction.begin().then(function () {
-            //         var request = new sql.Request(transaction);
+            //    console.log(req);
+            console.log(req.body);
 
-            //         request.query("INSERT INTO Products (ProductName, ProductPrice) VALUES ('" + req.body.ProductName + "''" + req.body.ProductName + "', " + req.body.ProductPrice + ");").then(function () {
-            //             transaction.commit().then(function (recordSet) {
-            //                 conn.close();
-            //                 res.status(200).send(req.body);
-            //             }).catch(function (err) {
-            //                 conn.close();
-            //                 res.status(400).send("Error while inserting data q" + err);
-            //             });
-            //         }).catch(function (err) {
-            //             conn.close();
-            //             res.status(400).send("Error while inserting data w" + err);
-            //         });
-            //     }).catch(function (err) {
-            //         conn.close();
-            //         res.status(400).send("Error while inserting data e" + err);
-            //     });
-            // }).catch(function (err) {
-            //     conn.close();
-            //     res.status(400).send("Error while inserting data r" + err);
-            // });
+
+
+            //  var result;
+            // loging.map(function (x) {
+            //     if (x.user === user && x.password === pass) {
+            //         console.log(true);
+            //         result = true;
+            //     } else {
+            //         console.log(false);
+            //         result = false;
+            //     }
+            // })
+
+            // console.log(result);
+            var found = loging.find(x => x.user === user && x.password === pass);
+            //    console.log(found !==)
+
+            res.json(found !== undefined ? found.user : null);
         });
     return router;
 };

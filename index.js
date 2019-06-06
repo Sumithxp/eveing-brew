@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', function(request, response) {
+app.get('/', function (request, response) {
   response.send('Api Server')
 })
 
@@ -18,18 +18,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
- var productController = require('./Controller/ProductController')();
- app.use("/api/products", productController);
+var productController = require('./Controller/ProductController')();
+app.use("/api/products", productController);
 
- var appointmentController = require('./Controller/AppointmentController')();
- app.use("/api/appointments", appointmentController);
+var appointmentController = require('./Controller/AppointmentController')();
+app.use("/api/appointments", appointmentController);
 
-// var loginController = require('./Controller/loginController')();
-// app.use("/api/login", loginController);
+var loginController = require('./Controller/loginController')();
+app.use("/api/login", loginController);
 
 
 
-app.listen(app.get('port'), function() {
+app.listen(app.get('port'), function () {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
 
